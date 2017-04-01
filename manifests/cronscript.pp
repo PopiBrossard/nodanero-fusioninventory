@@ -1,7 +1,7 @@
 
 #include fusion inventory
 
-class fusioninventory::cronscript inherits fusioninventory {
+class fusioninventory::cronscript inherits ::fusioninventory {
   $fusioninventory_server_url = $::fusioninventory::server_url
   file { $::crondest:
     ensure  => 'present',

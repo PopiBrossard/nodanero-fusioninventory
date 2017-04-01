@@ -1,7 +1,7 @@
 
 #include fusion inventory
 
-class fusioninventory::service inherits fusioninventory {
+class fusioninventory::service inherits ::fusioninventory {
   file { '/etc/fusioninventory/agent.cfg':
     ensure  => 'present',
     owner   => 'root',

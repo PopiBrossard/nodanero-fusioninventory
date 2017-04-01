@@ -1,7 +1,7 @@
 
 #include fusioninventory
 
-class fusioninventory::install inherits fusioninventory
+class fusioninventory::install inherits ::fusioninventory
 {
     case $::osfamily {
       'Windows': {
