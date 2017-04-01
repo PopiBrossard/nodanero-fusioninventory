@@ -2,8 +2,8 @@
 #include fusion inventory
 
 class fusioninventory::cronscript inherits ::fusioninventory {
-  $fusioninventory_server_url = $::fusioninventory::server_url
-  file { $::crondest:
+  $fusioninventory_server_url = $server_url
+  file { $crondest:
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',

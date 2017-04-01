@@ -8,10 +8,12 @@ class fusioninventory::service inherits ::fusioninventory {
     group   => 'root',
     mode    => '0755',
     content => template('fusioninventory/agent.cfg.erb'),
+    require => Package[$pkgfusion],
   }
 
-  service { $::pkgfusion :
-    ensure =>  $::service_ensure,
-    enable =>  $::service_enable,
+  service { $pkgfusion :
+    ensure  => $service_ensure,
+    enable  => $service_enable,
+    require => [ Package[$pkgfusion], File['/etc/fusioninventory/agent.cfg'] ],
   }
 }

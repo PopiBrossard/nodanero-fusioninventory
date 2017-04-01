@@ -12,14 +12,13 @@ class fusioninventory (
   $service_enable     = $fusioninventory::params::service_enable,
   $cronscript_enable  = $fusioninventory::params::cronscript_enable
 ) inherits fusioninventory::params {
-    include
-    'fusioninventory::install'
+    include 'fusioninventory::install'
 
-  if ($fusioninventory::cronscript_enable == true){
+  if ($cronscript_enable == true){
     include   'fusioninventory::cronscript'
   }
 
-  if ($fusioninventory::service_enable == true){
+  if ($service_enable == true){
     include   'fusioninventory::service'
   }
 
