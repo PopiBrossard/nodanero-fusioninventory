@@ -3,7 +3,7 @@
 
 class fusioninventory::install inherits fusioninventory
 {
-    case $facts['os']['family'] {
+    case $::osfamily {
       'Windows': {
         package { $::pkgfusion:
         ensure          => installed,
