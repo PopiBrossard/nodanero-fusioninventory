@@ -12,6 +12,17 @@ class fusioninventory::service inherits ::fusioninventory {
     require => Package[$pkgfusion],
   }
 
+  case $::osfamily {
+    'Debian': {
+      augeas { 'fusion_default_daemon':
+        changes => [
+          'set /files/etc/default/fusioninventory-agent/MODE daemon'
+        ],
+        notify => Service[$pkgfusion],
+      }
+    }
+  }
+
   service { $pkgfusion :
     ensure  => $service_ensure,
     enable  => $service_enable,
