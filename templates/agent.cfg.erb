@@ -1,8 +1,13 @@
 # File managed by puppet
 #
 # Do not edit
-<% if @no_proxy == false %>
+<% if @no_proxy == false -%>
 proxy = http://proxy_url:port
-<% end %>
-
+<% end -%>
 server = <%= @server_url %>
+<% if @user == nil -%>
+user = <%= @user %>
+<% end -%>
+<% if @password == nil -%>
+password = <%= @password %>
+<% end -%>

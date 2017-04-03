@@ -11,5 +11,7 @@ class fusioninventory::params {
   $service_ensure     = 'running'
   $service_enable     = true
   $cronscript_enable  = false
+  $user               = undef
+  $password           = undef
 
 }
