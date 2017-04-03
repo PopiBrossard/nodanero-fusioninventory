@@ -5,9 +5,9 @@
 proxy = http://proxy_url:port
 <% end -%>
 server = <%= @server_url %>
-<% if @user == nil -%>
+<% if @user != nil -%>
 user = <%= @user %>
 <% end -%>
-<% if @password == nil -%>
+<% if @password != nil -%>
 password = <%= @password %>
 <% end -%>
