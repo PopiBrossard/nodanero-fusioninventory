@@ -13,5 +13,6 @@ class fusioninventory::params {
   $cronscript_enable  = false
   $user               = undef
   $password           = undef
+  $embedded_http      = true
 
 }

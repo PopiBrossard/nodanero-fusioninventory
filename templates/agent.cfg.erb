@@ -11,3 +11,6 @@ user = <%= @user %>
 <% if @password != nil -%>
 password = <%= @password %>
 <% end -%>
+<% if !@embedded_http -%>
+no-httpd=1
+<% end -%>
