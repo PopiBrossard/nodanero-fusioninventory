@@ -17,3 +17,30 @@ no-httpd=1
 <% if @no_ssl_check -%>
 no-ssl-check = 1
 <% end -%>
+
+# maximum delay before first target, in seconds
+delaytime = 3600
+# do not contact the target before next scheduled time
+lazy = 0
+scan-profiles = 1
+# save the inventory as HTML
+html = 0
+# timeout for inventory modules execution
+backend-collect-timeout = 180
+# always send data to server
+force = 0
+# additional inventory content file
+additional-content =
+
+# Logger backend, either Stderr, File or Syslog (Stderr)
+logger = File
+# log file
+logfile = /var/log/fusioninventory.log
+# maximum log file size, in MB
+logfile-maxsize = 10
+# Syslog facility
+logfacility = LOG_USER
+# add given tag to inventory results
+tag =
+# debug mode
+debug = 0
