@@ -2,6 +2,19 @@
 #include fusion inventory
 
 class fusioninventory::service inherits ::fusioninventory {
+    case $::osfamily {
+      'Darwin': {
+  file { '/opt/fusioninventory/etc/agent.cfg':
+    ensure  => 'present',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    content => template('fusioninventory/agent.cfg.erb'),
+    notify  => Service[$pkgfusion],
+    require => Package[$pkgfusion],
+    }
+      }
+      default:             {
   file { '/etc/fusioninventory/agent.cfg':
     ensure  => 'present',
     owner   => 'root',
@@ -10,7 +23,9 @@ class fusioninventory::service inherits ::fusioninventory {
     content => template('fusioninventory/agent.cfg.erb'),
     notify  => Service[$pkgfusion],
     require => Package[$pkgfusion],
+    }
   }
+}
 
   case $::osfamily {
     'Debian': {
