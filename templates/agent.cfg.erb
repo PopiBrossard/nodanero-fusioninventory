@@ -14,3 +14,6 @@ password = <%= @password %>
 <% if !@embedded_http -%>
 no-httpd=1
 <% end -%>
+<% if @no_ssl_check -%>
+no-ssl-check = 1
+<% end -%>
