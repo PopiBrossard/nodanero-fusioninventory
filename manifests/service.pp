@@ -4,7 +4,7 @@
 class fusioninventory::service inherits ::fusioninventory {
     case $::osfamily {
       'Darwin': {
-  file { '/opt/fusioninventory/etc/agent.cfg':
+  file { '/opt/fusioninventory-agent/etc/agent.cfg':
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',
