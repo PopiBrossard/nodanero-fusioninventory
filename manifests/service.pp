@@ -22,6 +22,11 @@ class fusioninventory::service inherits ::fusioninventory {
     notify  => Service[$pkgfusion],
     require => Package[$pkgfusion],
     }
+  service { $pkgfusion :
+    ensure  => $service_ensure,
+    enable  => $service_enable,
+    require => [ Package[$pkgfusion], File['/etc/fusioninventory/agent.cfg'] ],
+  }    
   }
 }
 
@@ -34,11 +39,5 @@ class fusioninventory::service inherits ::fusioninventory {
         notify => Service[$pkgfusion],
       }
     }
-  }
-
-  service { $pkgfusion :
-    ensure  => $service_ensure,
-    enable  => $service_enable,
-    require => [ Package[$pkgfusion], File['/etc/fusioninventory/agent.cfg'] ],
   }
 }
