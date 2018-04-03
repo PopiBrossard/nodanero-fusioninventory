@@ -7,7 +7,7 @@ class fusioninventory::service inherits ::fusioninventory {
   file { '/opt/fusioninventory-agent/etc/agent.cfg':
     ensure  => 'present',
     owner   => 'root',
-    group   => 'root',
+    group   => 'wheel',
     mode    => '0755',
     content => template('fusioninventory/agent.cfg.erb'),
     }
