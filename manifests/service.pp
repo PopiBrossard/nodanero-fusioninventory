@@ -10,8 +10,6 @@ class fusioninventory::service inherits ::fusioninventory {
     group   => 'root',
     mode    => '0755',
     content => template('fusioninventory/agent.cfg.erb'),
-    notify  => Service[$pkgfusion],
-    require => Package[$pkgfusion],
     }
       }
       default:             {
