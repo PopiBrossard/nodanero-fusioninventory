@@ -14,5 +14,5 @@ class fusioninventory::params {
   $user               = undef
   $password           = undef
   $embedded_http      = true
-
+  $no_ssl_check       = false
 }
