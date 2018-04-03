@@ -10,8 +10,14 @@ class fusioninventory::service inherits ::fusioninventory {
     group   => 'wheel',
     mode    => '0755',
     content => template('fusioninventory/agent.cfg.erb'),
-#    notify  => Service['org.fusioninventory.agent'],
+    notify  => Service['org.fusioninventory.agent'],
     }
+  service { 'org.fusioninventory.agent':
+    ensure  => $service_ensure,
+    enable  => $service_enable,
+#    require => [ Package[org.fusioninventory-agent], File['/opt/fusioninventory-agent/etc/agent.cfg'] ],
+  }    
+    
       }
       default:             {
   file { '/etc/fusioninventory/agent.cfg':
