@@ -13,7 +13,8 @@ class fusioninventory (
   $cronscript_enable  = $fusioninventory::params::cronscript_enable,
   $user               = $fusioninventory::params::user,
   $password           = $fusioninventory::params::password,
-  $embedded_http      = $fusioninventory::params::embedded_http
+  $embedded_http      = $fusioninventory::params::embedded_http,
+  $no_ssl_check       = $fusioninventory::params::no_ssl_check
 ) inherits fusioninventory::params {
     include 'fusioninventory::install'
 
