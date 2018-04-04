@@ -6,6 +6,7 @@ class fusioninventory (
   $pkgfusion          = $fusioninventory::params::pkgfusion,
   $server_url         = $fusioninventory::params::server_url,
   $windowsmsi         = $fusioninventory::params::windowsmsi,
+  $macospkg           = $fusioninventory::params::macospkg,
   $crondest           = $fusioninventory::params::crondest,
   $version            = $fusioninventory::params::version,
   $service_ensure     = $fusioninventory::params::service_ensure,
