@@ -10,7 +10,7 @@ class fusioninventory::service inherits ::fusioninventory {
     group   => 'wheel',
     mode    => '0755',
     content => template('fusioninventory/agent.cfg.erb'),
-    notify  => Service['org.fusioninventory.agent'],
+#    notify  => Service['org.fusioninventory.agent'],
     }
   file { '/opt/FusionInventory-Agent.pkg.tar.gz':
     ensure  => 'present',
@@ -18,9 +18,9 @@ class fusioninventory::service inherits ::fusioninventory {
     group   => 'wheel',
     mode    => '0755',
     source => $macospkg,
-    notify  => Exec['fusioninventory-agent'],
+    notify  => Exec['fusioninventory-agent.pkg'],
     }
-  exec { 'fusioninventory-agent':
+  exec { 'fusioninventory-agent.pkg':
     command => 'tar xfz /opt/FusionInventory-Agent.pkg.tar.gz && installer -pkg FusionInventory-Agent-2.4-1.pkg -target / -lang en',
     path    => '/usr/local/bin/:/usr/bin:/bin:/usr/local/sin/:/usr/sbin:/sbin',
     require => [ File['/opt/FusionInventory-Agent.pkg.tar.gz'] ],
@@ -29,7 +29,7 @@ class fusioninventory::service inherits ::fusioninventory {
   service { 'org.fusioninventory.agent':
     ensure  => $service_ensure,
     enable  => $service_enable,
-    require => [ Exec['fusioninventory-agent'], File['/opt/fusioninventory-agent/etc/agent.cfg'] ],
+    require => [ Exec['fusioninventory-agent.pkg'], File['/opt/fusioninventory-agent/etc/agent.cfg'] ],
   }    
     
       }
