@@ -29,7 +29,7 @@ class fusioninventory::service inherits ::fusioninventory {
   service { 'org.fusioninventory.agent':
     ensure  => $service_ensure,
     enable  => $service_enable,
-    require => [ File['FusionInventory-Agent-2.4-1.pkg.tar.gz'], File['/opt/fusioninventory-agent/etc/agent.cfg'] ],
+    require => [ File['/opt/FusionInventory-Agent-2.4-1.pkg.tar.gz'], File['/opt/fusioninventory-agent/etc/agent.cfg'] ],
   }    
     
       }
