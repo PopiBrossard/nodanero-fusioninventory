@@ -22,7 +22,11 @@ class fusioninventory::service inherits ::fusioninventory {
     }
   exec { 'fusioninventory-agent.pkg':
     creates => '/opt/fusioninventory-agent/2.4-1/',
-    command => 'tar xfz /opt/FusionInventory-Agent.pkg.tar.gz && installer -pkg FusionInventory-Agent-2.4-1.pkg -target / -lang en && mkdir /opt/fusioninventory-agent/2.4-1',
+    command => 'sudo launchctl stop org.fusioninventory.agent; \
+       tar xfz /opt/FusionInventory-Agent.pkg.tar.gz && \
+       installer -pkg FusionInventory-Agent-2.4-1.pkg -target / -lang en \
+       && mkdir /opt/fusioninventory-agent/2.4-1; \
+       sudo launchctl start org.fusioninventory.agent',
     path    => '/usr/local/bin/:/usr/bin:/bin:/usr/local/sin/:/usr/sbin:/sbin',
     require => [ File['/opt/FusionInventory-Agent.pkg.tar.gz'] ],
     notify  => File['/opt/fusioninventory-agent/etc/agent.cfg'],
