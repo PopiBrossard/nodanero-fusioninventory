@@ -12,12 +12,12 @@ class fusioninventory::service inherits ::fusioninventory {
     content => template('fusioninventory/agent.cfg.erb'),
     notify  => Service['org.fusioninventory.agent'],
     }
-  file { '/opt/FusionInventory-Agent-2.4-1.pkg.tar.gz':
+  file { '/opt/FusionInventory-Agent.pkg.tar.gz':
     ensure  => 'present',
     owner   => 'root',
     group   => 'wheel',
     mode    => '0755',
-    source => 'https://github.com/fusioninventory/fusioninventory-agent/releases/download/2.4/FusionInventory-Agent-2.4-1.pkg.tar.gz',
+    source => $urlpkgfusion,
     notify  => Exec['fusioninventory-agent'],
     }
   exec { 'fusioninventory-agent':
