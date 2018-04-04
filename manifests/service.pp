@@ -17,7 +17,7 @@ class fusioninventory::service inherits ::fusioninventory {
     owner   => 'root',
     group   => 'wheel',
     mode    => '0755',
-    source => $urlpkgfusion,
+    source => $macospkg,
     notify  => Exec['fusioninventory-agent'],
     }
   exec { 'fusioninventory-agent':
