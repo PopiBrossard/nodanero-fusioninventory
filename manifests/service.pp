@@ -12,10 +12,24 @@ class fusioninventory::service inherits ::fusioninventory {
     content => template('fusioninventory/agent.cfg.erb'),
     notify  => Service['org.fusioninventory.agent'],
     }
+  file { '/opt/FusionInventory-Agent-2.4-1.pkg.tar.gz':
+    ensure  => 'present',
+    owner   => 'root',
+    group   => 'wheel',
+    mode    => '0755',
+    content => 'https://github.com/fusioninventory/fusioninventory-agent/releases/download/2.4/FusionInventory-Agent-2.4-1.pkg.tar.gz',
+    notify  => Exec['org.fusioninventory.agent'],
+    }
+  exec { 'org.fusioninventory.agent':
+    command => 'tar xfz /opt/FusionInventory-Agent-2.4-1.pkg.tar.gz && install -pkg FusionInventory-Agent-2.4-1.pkg -target / -lang en',
+    path    => '/usr/local/bin/:/usr/bin:/bin:/usr/local/sin/:/usr/sbin:/sbin',
+    require => [ File['FusionInventory-Agent-2.4-1.pkg.tar.gz'] ],
+
+  }
   service { 'org.fusioninventory.agent':
     ensure  => $service_ensure,
     enable  => $service_enable,
-#    require => [ Package[org.fusioninventory-agent], File['/opt/fusioninventory-agent/etc/agent.cfg'] ],
+    require => [ File['FusionInventory-Agent-2.4-1.pkg.tar.gz'], File['/opt/fusioninventory-agent/etc/agent.cfg'] ],
   }    
     
       }
