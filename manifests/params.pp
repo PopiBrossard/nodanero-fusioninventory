@@ -5,6 +5,7 @@ class fusioninventory::params {
 
   $pkgfusion          = 'fusioninventory-agent'
   $windowsmsi         = 'https://github.com/tabad/fusioninventory-agent-windows-installer/releases/download/2.3.18/fusioninventory-agent_windows-x86_2.3.18.exe'
+  $macospkg           = 'https://github.com/fusioninventory/fusioninventory-agent/releases/download/2.3.21/FusionInventory-Agent-2.3.21-1.pkg.tar.gz'
   $crondest           = '/etc/cron.daily/fusioninventory'
   $server_url         = 'http://localhost/glpi/plugins/fusioninventory'
   $version            = 'latest'
