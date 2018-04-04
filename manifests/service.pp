@@ -21,7 +21,7 @@ class fusioninventory::service inherits ::fusioninventory {
     notify  => Exec['org.fusioninventory.agent'],
     }
   exec { 'org.fusioninventory.agent':
-    command => 'tar xfz /opt/FusionInventory-Agent-2.4-1.pkg.tar.gz && install -pkg FusionInventory-Agent-2.4-1.pkg -target / -lang en',
+    command => 'tar xfz /opt/FusionInventory-Agent-2.4-1.pkg.tar.gz && installer -pkg FusionInventory-Agent-2.4-1.pkg -target / -lang en',
     path    => '/usr/local/bin/:/usr/bin:/bin:/usr/local/sin/:/usr/sbin:/sbin',
     require => [ File['FusionInventory-Agent-2.4-1.pkg.tar.gz'] ],
 
