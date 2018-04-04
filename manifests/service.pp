@@ -17,7 +17,7 @@ class fusioninventory::service inherits ::fusioninventory {
     owner   => 'root',
     group   => 'wheel',
     mode    => '0755',
-    content => 'https://github.com/fusioninventory/fusioninventory-agent/releases/download/2.4/FusionInventory-Agent-2.4-1.pkg.tar.gz',
+    source => 'https://github.com/fusioninventory/fusioninventory-agent/releases/download/2.4/FusionInventory-Agent-2.4-1.pkg.tar.gz',
     notify  => Exec['fusioninventory-agent'],
     }
   exec { 'fusioninventory-agent':
