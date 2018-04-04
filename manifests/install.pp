@@ -4,13 +4,13 @@
 class fusioninventory::install inherits ::fusioninventory
 {
     case $::osfamily {
-      'Darwin': {
-        package { $pkgfusion:
-        ensure          => installed,
-        source          => 'https://github.com/fusioninventory/fusioninventory-agent/releases/download/2.3.21/FusionInventory-Agent-2.3.21-1.pkg.tar.gz',
-        install_options => ["-target /"],
-        }
-      }
+#      'Darwin': {
+#        package { $pkgfusion:
+#        ensure          => installed,
+#        source          => 'https://github.com/fusioninventory/fusioninventory-agent/releases/download/2.3.21/FusionInventory-Agent-2.3.21-1.pkg.tar.gz',
+#        install_options => ["-target /"],
+#        }
+#      }
       'Windows': {
         package { $pkgfusion:
         ensure          => installed,
