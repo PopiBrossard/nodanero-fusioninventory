@@ -1,0 +1,20 @@
+[Service]
+NoNewPrivileges=true                                                                    # Protect against privilege escalation
+ProtectClock=true                                                                       # Writes to hardware or system clock will be denied
+ProtectHostname=true                                                                    # changing hostname or domainname is prevented
+ProtectSystem=full                                                                      # /usr /boot /etc read-only
+ProtectHome=true                                                                        # /home read-only
+ProtectKernelTunables=true                                                              # Kernel variables acessible through /proc/sys /sys (and some other /proc folders) are read-only
+ProtectKernelModules=true                                                               # Explicit module loading is prevented
+ProtectControlGroups=true                                                               # /sys/fs/cgroup is read-only
+PrivateTmp=true                                                                         # New FS namespace and mount private /tmp and /var/tmp
+RestrictNamespaces=true                                                                 # Access to any kind of namespacing is prohibited
+RestrictSUIDSGID=true                                                                   # adding u+s or g+s is prohibited
+LockPersonality=true                                                                    # Locks down personality sys call
+MemoryDenyWriteExecute=true                                                             # Creating or using writable+executable memory mapping is prohibited
+RestrictRealtime=true                                                                   # Realtime scheduling is prohibited
+SystemCallFilter=~@clock @module @mount @raw-io @reboot @swap @cpu-emulation @obsolete  # Remove some sys calls
+CapabilityBoundingSet=                                                                  # Remove all capabilities
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_IB AF_NETLINK                       # Allow specific type of sockets
+SystemCallArchitectures=native                                                          # Only allow native sys calls & sys calls on
+UMask=0027                                                                              # Change default umask
