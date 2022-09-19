@@ -58,14 +58,14 @@ class fusioninventory::service inherits ::fusioninventory {
         ensure  => 'directory',
         owner   => 'root',
         group   => 'root',
-        mode    => '0750',
+        mode    => '0754',
         notify  => File['/etc/systemd/system/fusioninventory-agent.service.d/override.conf'],
       }
       file {'/etc/systemd/system/fusioninventory-agent.service.d/override.conf':
         ensure  => 'file',
         owner   => 'root',
         group   => 'root',
-        mode    => '0640',
+        mode    => '0644',
         content => template('fusioninventory/override.conf.erb'),
         notify  => Service[$pkgfusion],
         require => File['/etc/systemd/system/fusioninventory-agent.service.d/'],
